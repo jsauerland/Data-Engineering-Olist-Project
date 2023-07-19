@@ -3,9 +3,11 @@
 In order to practice and enhance my data skills, I launched a project to model data, create data pipelines, a data lake, and much more. This helped me to further my understanding of Data Engineering both practically and conceptually. For this project, I am using Azure to setup a Data Lake. 
 
 
-# Part 1: Establishing the Data Lake with Azure
+# Part 1: Establishing a Data Lake with Azure
 
 
 # Part 2: Modeling the data (ELT)
 
- I first loaded the extracts into the Cloud Data Warehouse, and then transformation takes place in the target system. The data is not transformed on entry to the data lake, but stored in its original raw format
+For this part of the project, I used several completely different applications and cloud data warehouses in order to gain more exposure, and understanding of different CDWs, and how they differ in form and function. These include Apache Cassandra, Snowflake, Azure Data Lake, Google BigQuery, and SQL SERVER.
+
+In each of these apps, I first loaded the extracts into the Data Warehouse, and then transformation takes place in the target system. The data was not transformed on submission to the data warehouse, but stored in its original format.
