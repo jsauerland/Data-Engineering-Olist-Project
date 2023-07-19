@@ -5,7 +5,7 @@ In order to practice and enhance my data skills, I launched a project to model d
 
 # Part 1: Establishing the Data Warehouses
 
-For this part of the project, I used several completely different applications and cloud data warehouses in order to gain more exposure, and understanding of different CDWs, and how they differ in form and function. These include Apache Cassandra, Snowflake, Azure Data Lake, Google BigQuery, and SQL SERVER.
+For this project, I used several completely different applications and cloud data warehouses in order to gain more exposure, and understanding of different CDWs, and how they differ in form and function. These include Apache Cassandra, Snowflake, Azure Data Lake, Google BigQuery, and SQL SERVER.
 
 
 # Part 2: Modeling the data (ELT)
