@@ -2,6 +2,13 @@
 
 In order to practice and enhance my data skills, I launched a project to model data, create data pipelines, a data lake, and much more. This helped me to further my understanding of Data Engineering both practically and conceptually. For this project, I am using Azure to setup a Data Lake. 
 
+### Objectives of this project:
+
+- Broaden my understanding of data infrastructure, data warehousing
+- Develop cloud-based data warehouses on modern Cloud Data Warehouse applications: Google BigQuery, Apache Cassandra, Spark, Amazon Redshift, etc.
+- Further my understanding of big data ecosystems
+- Learn how Data Pipelines work in detail
+
 
 # Part 1: Establishing the Data Warehouses
 
