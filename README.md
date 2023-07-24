@@ -4,9 +4,9 @@ In order to practice and enhance my data engineeering skillset, I launched a pro
 
 ### Objectives of this project:
 
-- Broaden my understanding of data infrastructure, data warehousing
+- Broaden my knowledge of big data infrastructure, data warehousing
 - Develop cloud-based data warehouses on modern Cloud Data Warehouse applications: Google BigQuery, Apache Cassandra, Spark, Amazon Redshift, etc.
-- Further my understanding of big data ecosystems
+- Deepen my understanding of big data ecosystems
 - Learn how Data Pipelines work in detail
 
 
