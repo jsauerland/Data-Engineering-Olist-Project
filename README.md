@@ -1,6 +1,6 @@
 # Data-Engineering-Olist-Project 
 
-<img src="{https://img.shields.io/badge/Google%20Analytics-E37400?style=for-the-badge&logo=google%20analytics&logoColor=white}" />
+
 
 In order to practice and enhance my data engineeering skillset, I launched a project to model data, create data pipelines, a data lake, and much more. This helped me to further my understanding of Data Engineering both practically and conceptually. For this project, I am using Azure to setup a Data Lake. 
 
