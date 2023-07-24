@@ -1,4 +1,6 @@
-# Data-Engineering-Olist-Project
+# Data-Engineering-Olist-Project 
+
+![image]({https://img.shields.io/badge/Codecov-F01F7A?style=for-the-badge&logo=Codecov&logoColor=white})
 
 In order to practice and enhance my data engineeering skillset, I launched a project to model data, create data pipelines, a data lake, and much more. This helped me to further my understanding of Data Engineering both practically and conceptually. For this project, I am using Azure to setup a Data Lake. 
 
