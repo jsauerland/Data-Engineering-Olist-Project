@@ -47,3 +47,21 @@ for idx, csv_file in enumerate(csv_files):      # Loop through the list of filen
     dataframes[df_name] = pd.read_csv(csv_file)
 
 print(list(dataframes.keys()))
+
+
+# Define the Google Cloud project ID
+project_id = 'olist-ecommerce-project'  # Replace with your actual project ID
+
+# Assuming df_1 is the DataFrame you want to import into BigQuery
+df_1 = dataframes['df_1']
+
+# Define the destination table name
+destination_table = f'{project_id}.your_dataset_name.your_table_name'  # Replace with your actual dataset and table name
+
+# Import df_1 into BigQuery
+pandas_gbq.to_gbq(
+    df_1,  # DataFrame to export
+    destination_table,  # Destination table name
+    project_id=project_id,  # Google Cloud project ID
+    if_exists='replace',  # Whether to replace the table if it already exists
+)
