@@ -14,14 +14,16 @@ api = kaggle.api
 
 # Set Google Application Credentials
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'BQ_KEY.json' # this is your account details JSON file
-
+key_path = 'BQ-olist-ecommerce-key.json'
 
 # Create a BigQuery client instance (bigquery_client)
 
-client = bigquery.Client() # Create a BigQuery client instance (bigquery_client)
+
 credentials = service_account.Credentials.from_service_account_file(
-    'BQ_KEY.json',
+    key_path
 )
+
+client = bigquery.Client(credentials=credentials, project='olist-ecommerce-project') # Create a BigQuery client instance (bigquery_client)
 
 # kaggle.api.dataset_download_files('olistbr/brazilian-ecommerce',  unzip=True) # This is commented out after it is run because re-running it will re-pull the data from Kaggle using bandwith and CPU resources unnecessarily
 
@@ -55,13 +57,16 @@ project_id = 'olist-ecommerce-project'  # Replace with your actual project ID
 # Assuming df_1 is the DataFrame you want to import into BigQuery
 df_1 = dataframes['df_1']
 
-# Define the destination table name
-destination_table = f'{project_id}.your_dataset_name.your_table_name'  # Replace with your actual dataset and table name
 
 # Import df_1 into BigQuery
-pandas_gbq.to_gbq(
-    df_1,  # DataFrame to export
-    destination_table,  # Destination table name
-    project_id=project_id,  # Google Cloud project ID
-    if_exists='replace',  # Whether to replace the table if it already exists
+
+
+export_df = pandas_gbq.to_gbq(
+    df_1, 
+    'ecommerce_data.test_table_1', 
+    project_id='olist-ecommerce-project', 
+    if_exists='replace',
 )
+
+if __name__ == "__main__":
+    export_df()
