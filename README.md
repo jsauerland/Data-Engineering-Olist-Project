@@ -16,8 +16,11 @@ In order to practice and enhance my data engineeering skillset, I launched a pro
 
 For this project, I used several completely different applications and cloud data warehouses in order to gain more exposure, and understanding of different CDWs, and how they differ in form and function. These include Apache Cassandra, Snowflake, Azure Data Lake, Google BigQuery, and SQL SERVER.
 
+# Part 2: Extracting and Loading the data
 
-# Part 2: Modeling the data (ELT)
+In this stage, I wrote an API to retrieve data from Kaggle, and another API to interface with a new project in Google BigQuery. Then, I retrieved and extracted all of the files from Kaggle, and using enumeration, looped through all of the files to create Pandas Dataframes. Finally, after creating the dataframes, I piped the data directly into Google BigQuery using the API into brand new tables.  
+
+# Part 3: Modeling the data (ELT)
 
 
 In all of the applications I used, I first loaded the extracts into the Data Warehouse, and then transformation takes place in the target system. The data was not transformed on submission to the data warehouse, but stored in its original format.
