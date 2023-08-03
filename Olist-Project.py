@@ -68,5 +68,12 @@ export_df = pandas_gbq.to_gbq(
     if_exists='replace',
 )
 
-if __name__ == "__main__":
-    export_df()
+if __name__ == "__main__": # Loop through the dataframes and export each to BigQuery
+    for df_name, df in dataframes.items():
+        table_name = f'ecommerce_data.{df_name}'  # Define the BigQuery table name
+        pandas_gbq.to_gbq(
+            df,
+            table_name,
+            project_id=project_id,
+            if_exists='replace',
+        )
