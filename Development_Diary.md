@@ -1,4 +1,4 @@
-# Data-Engineering-Olist-Project Dev Diary
+# Olist-Project Devevelopment Diary
 
 
 In this file, I include a complete list of all developments made to this project. 
