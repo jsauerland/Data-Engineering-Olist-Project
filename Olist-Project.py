@@ -28,7 +28,6 @@ client = bigquery.Client(credentials=credentials, project='olist-ecommerce-proje
 # kaggle.api.dataset_download_files('olistbr/brazilian-ecommerce',  unzip=True) # This is commented out after it is run because re-running it will re-pull the data from Kaggle using bandwith and CPU resources unnecessarily
 
 
-
 csv_files = [
     'olist_customers_dataset.csv',
     'olist_geolocation_dataset.csv',
@@ -44,37 +43,27 @@ csv_files = [
 dataframes = {}     # Create an empty dictionary to store dataframes
 
 
-for idx, csv_file in enumerate(csv_files):      # Loop through the list of filenames and read CSV files into dataframes
-    df_name = f"df_{idx + 1}"                   # Generate dataframe variable name
-    dataframes[df_name] = pd.read_csv(csv_file)
 
-print(list(dataframes.keys()))
+for idx, csv_file in enumerate(csv_files):      # Loop through the list of filenames and read CSV files into dataframes
+    df_name = csv_file.replace('.csv', '')     # Remove the '.csv' extension from the filename
+    dataframes[f"df_{idx + 1}"] = pd.read_csv(csv_file)
+
+order_items_columns = dataframes['df_3'].columns
+print(f"Columns in DataFrame {'df_3'}:", order_items_columns)
+
 
 
 # Define the Google Cloud project ID
 project_id = 'olist-ecommerce-project'  # Replace with your actual project ID
 
-# Assuming df_1 is the DataFrame you want to import into BigQuery
-df_1 = dataframes['df_1']
 
-
-# Import df_1 into BigQuery
-
-
-export_df = pandas_gbq.to_gbq(
-    df_1, 
-    'ecommerce_data.test_table_1', 
-    project_id='olist-ecommerce-project', 
-    if_exists='replace',
-)
-
-if __name__ == "__main__":
-    # Loop through the dataframes and export each to BigQuery
-    for df_name, df in tq.tqdm(dataframes.items(), desc='Exporting to BigQuery', unit='table'):
-        table_name = f'ecommerce_data.{df_name}'
-        pandas_gbq.to_gbq(
-            df,
-            table_name,
-            project_id=project_id,
-            if_exists='replace',
-        )
+# if __name__ == "__main__":
+#     # Loop through the dataframes and export each to BigQuery
+#     for df_name, df in tq.tqdm(dataframes.items(), desc='Exporting to BigQuery', unit='table'):
+#         table_name = f'ecommerce_data.{df_name}'
+#         pandas_gbq.to_gbq(
+#             df,
+#             table_name,
+#             project_id=project_id,
+#             if_exists='replace',
+#         )
