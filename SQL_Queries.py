@@ -6,64 +6,43 @@ import kaggle
 from kaggle.api.kaggle_api_extended import KaggleApi
 import os
 import pandas as pd
-import pandas_gbq
-import tqdm as tq
 
-# Configure Kaggle API
-api = kaggle.api
+
 
 # Set Google Application Credentials
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'BQ_KEY.json' # this is your account details JSON file
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'BQ_KEY.json' # BigQuery Key
 key_path = 'BQ-olist-ecommerce-key.json'
 
 # Create a BigQuery client instance (bigquery_client)
 
+credentials = service_account.Credentials.from_service_account_file(key_path)
+client = bigquery.Client(credentials=credentials, project='olist-ecommerce-project') 
+project_id = 'olist-ecommerce-project'  
 
-credentials = service_account.Credentials.from_service_account_file(
-    key_path
+# API request - fetch the table
+
+sql_query = """ 
+WITH OrderSummary AS (
+    SELECT 
+        order_status, 
+        COUNT(DISTINCT order_id) AS `Order Count`,
+        ROUND(COUNT(DISTINCT order_id) / SUM(COUNT(DISTINCT order_id)) OVER () * 100, 2) AS `Percent of Total`
+    FROM 
+        `olist-ecommerce-project.ecommerce_data.olist_orders_dataset` 
+    GROUP BY 
+        order_status
 )
+SELECT 
+    order_status, 
+    `Order Count`,
+    `Percent of Total`
+FROM 
+    OrderSummary
+ORDER BY 
+    `Order Count` DESC;
 
-client = bigquery.Client(credentials=credentials, project='olist-ecommerce-project') # Create a BigQuery client instance (bigquery_client)
+"""
 
-# kaggle.api.dataset_download_files('olistbr/brazilian-ecommerce',  unzip=True) # This is commented out after it is run because re-running it will re-pull the data from Kaggle using bandwith and CPU resources unnecessarily
+df = pd.read_gbq(sql_query, project_id = project_id, credentials=credentials, dialect = 'standard')
 
-
-csv_files = [
-    'olist_customers_dataset.csv',
-    'olist_geolocation_dataset.csv',
-    'olist_order_items_dataset.csv',
-    'olist_order_payments_dataset.csv',
-    'olist_order_reviews_dataset.csv',
-    'olist_orders_dataset.csv',
-    'olist_sellers_dataset.csv',
-    'product_category_name_translation.csv'
-]
-
-
-dataframes = {}     # Create an empty dictionary to store dataframes
-
-
-
-for idx, csv_file in enumerate(csv_files):      # Loop through the list of filenames and read CSV files into dataframes
-    df_name = csv_file.replace('.csv', '')     # Remove the '.csv' extension from the filename
-    dataframes[f"df_{idx + 1}"] = pd.read_csv(csv_file)
-
-order_items_columns = dataframes['df_3'].columns
-print(f"Columns in DataFrame {'df_3'}:", order_items_columns)
-
-
-
-# Define the Google Cloud project ID
-project_id = 'olist-ecommerce-project'  # Replace with your actual project ID
-
-
-# if __name__ == "__main__":
-#     # Loop through the dataframes and export each to BigQuery
-#     for df_name, df in tq.tqdm(dataframes.items(), desc='Exporting to BigQuery', unit='table'):
-#         table_name = f'ecommerce_data.{df_name}'
-#         pandas_gbq.to_gbq(
-#             df,
-#             table_name,
-#             project_id=project_id,
-#             if_exists='replace',
-#         )
+print(df.head)

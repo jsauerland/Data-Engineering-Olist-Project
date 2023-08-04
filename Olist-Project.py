@@ -24,6 +24,7 @@ credentials = service_account.Credentials.from_service_account_file(
 )
 
 client = bigquery.Client(credentials=credentials, project='olist-ecommerce-project') # Create a BigQuery client instance (bigquery_client)
+project_id = 'olist-ecommerce-project'  # Replace with your actual project ID
 
 # kaggle.api.dataset_download_files('olistbr/brazilian-ecommerce',  unzip=True) # This is commented out after it is run because re-running it will re-pull the data from Kaggle using bandwith and CPU resources unnecessarily
 
@@ -45,11 +46,11 @@ dataframes = {}     # Create an empty dictionary to store dataframes
 
 
 
-# Define the Google Cloud project ID
-project_id = 'olist-ecommerce-project'  # Replace with your actual project ID
 
-for idx, csv_file in enumerate(csv_files):
-    df_name = csv_file.replace('.csv', '')  # Remove the '.csv' extension from the filename
+
+
+for idx, csv_file in enumerate(csv_files):  #loop through the CSV files and set df_name
+    df_name = csv_file.replace('.csv', '')  
     dataframes[df_name] = pd.read_csv(csv_file)  # Use df_name as the key in the dictionary
     print(df_name)
 
