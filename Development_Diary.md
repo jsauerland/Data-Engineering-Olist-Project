@@ -20,5 +20,6 @@ In this file, I include a complete list of all developments made to this project
 8. Calculate the average price for each seller.
 9. List the orders with a shipping limit date beyond a specific date.
 10. Retrieve the total revenue generated from all orders.
+    
 
 Remember, these questions can serve as starting points for your SQL practice with the 'olist_order_items_dataset'. You can gradually increase the complexity of your queries as you become more comfortable with SQL.
