@@ -44,22 +44,26 @@ dataframes = {}     # Create an empty dictionary to store dataframes
 
 
 
+for idx, csv_file in enumerate(csv_files):      # Loop through the list of filenames and read CSV files into dataframes
+    df_name = csv_file.replace('.csv', '')     # Remove the '.csv' extension from the filename
+    dataframes[f"df_{idx + 1}"] = pd.read_csv(csv_file)
+
+order_items_columns = dataframes['df_3'].columns
+print(f"Columns in DataFrame {'df_3'}:", order_items_columns)
+
+
 
 # Define the Google Cloud project ID
 project_id = 'olist-ecommerce-project'  # Replace with your actual project ID
 
-for idx, csv_file in enumerate(csv_files):
-    df_name = csv_file.replace('.csv', '')  # Remove the '.csv' extension from the filename
-    dataframes[df_name] = pd.read_csv(csv_file)  # Use df_name as the key in the dictionary
-    print(df_name)
 
-if __name__ == "__main__":
-    project_id = project_id  
-    for df_name, df in dataframes.items():
-        table_name = f'ecommerce_data.{df_name}'
-        pandas_gbq.to_gbq(
-            df,
-            table_name,
-            project_id=project_id,
-            if_exists='replace',
-        )
+# if __name__ == "__main__":
+#     # Loop through the dataframes and export each to BigQuery
+#     for df_name, df in tq.tqdm(dataframes.items(), desc='Exporting to BigQuery', unit='table'):
+#         table_name = f'ecommerce_data.{df_name}'
+#         pandas_gbq.to_gbq(
+#             df,
+#             table_name,
+#             project_id=project_id,
+#             if_exists='replace',
+#         )
