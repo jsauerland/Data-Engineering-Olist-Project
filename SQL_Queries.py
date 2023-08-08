@@ -27,7 +27,7 @@ WITH OrderSummary AS (
         order_status, 
         COUNT(DISTINCT order_id) AS `Order Count`,
         ROUND(COUNT(DISTINCT order_id) / SUM(COUNT(DISTINCT order_id)) OVER () * 100, 2) AS `Percent of Total`
-    FROM 
+    FROM  
         `olist-ecommerce-project.ecommerce_data.olist_orders_dataset` 
     GROUP BY 
         order_status
