@@ -15,7 +15,7 @@ In this file, I include a complete list of all developments made to this project
 3. Calculate the average price and freight value for all orders.
 4. Find the total number of distinct sellers in the dataset.
 5. Get the highest and lowest prices among all products
-6. Count the number of orders for each unique `product_id`.
+6. Count the number of orders for each unique `product_id`
 7. Find the orders with the highest total price (price + freight value).
 8. Calculate the average price for each seller.
 9. List the orders with a shipping limit date beyond a specific date.
