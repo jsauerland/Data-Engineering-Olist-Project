@@ -10,7 +10,7 @@ In this file, I include a complete list of all developments made to this project
 4/5/2023: Added data questions added to 'SQL_Queries.py':
 
 
-1. Retrieve all columns for a specific order using its `order_id`.
+1. Retrieve all columns for a specific order using its `order_id`
 2. List the unique product IDs present in the dataset.
 3. Calculate the average price and freight value for all orders.
 4. Find the total number of distinct sellers in the dataset.

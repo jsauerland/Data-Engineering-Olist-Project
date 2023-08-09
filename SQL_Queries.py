@@ -19,9 +19,9 @@ credentials = service_account.Credentials.from_service_account_file(key_path)
 client = bigquery.Client(credentials=credentials, project='olist-ecommerce-project') 
 project_id = 'olist-ecommerce-project'  
 
-# API request - fetch the table
+# ???
 
-sql_query = """ 
+sql_query_1 = """ 
 WITH OrderSummary AS (
     SELECT 
         order_status, 
@@ -43,6 +43,34 @@ ORDER BY
 
 """
 
-df = pd.read_gbq(sql_query, project_id = project_id, credentials=credentials, dialect = 'standard')
+# retrieve customers who have not placed an order.
+
+sql_query_2 = """ 
+WITH CustomersWithoutOrders AS (
+  SELECT a.customer_id
+  FROM `ecommerce_data.olist_customers_dataset` AS a
+  WHERE NOT EXISTS (
+    SELECT 1
+    FROM `ecommerce_data.olist_orders_dataset` AS b
+    WHERE a.customer_id = b.customer_id
+  )
+)
+
+SELECT customer_id
+FROM CustomersWithoutOrders;
+
+"""
+
+# Retrieve total revenue for all orders
+
+sql_query_3 = """ 
+SELECT SUM(A.price) AS total_revenue, product_id
+FROM `ecommerce_data.olist_order_items_dataset` AS A
+LEFT OUTER JOIN `ecommerce_data.olist_orders_dataset` AS B ON A.order_id = B.order_id
+GROUP BY product_id
+ORDER BY total_revenue desc
+"""
+
+df = pd.read_gbq(sql_query_1, project_id = project_id, credentials=credentials, dialect = 'standard')
 
 print(df.head)
