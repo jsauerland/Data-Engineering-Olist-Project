@@ -71,6 +71,24 @@ GROUP BY product_id
 ORDER BY total_revenue desc
 """
 
+# Find the orders with the highest total price (price + freight value).
+
+sql_query_4 = """
+WITH TotalPriceCTE AS ( 
+  SELECT A.order_id, A.product_id, C.product_category_name_english, ROUND(SUM (price + freight_value),2) AS TotalPrice
+  
+  FROM `ecommerce_data.olist_order_items_dataset` as A
+  LEFT JOIN `ecommerce_data.olist_products_dataset` as B on A.product_id = B.product_id
+  LEFT JOIN `ecommerce_data.product_category_name_translation` as C on B.product_category_name = C.product_category_name
+
+  GROUP BY A.order_id, A.product_id, C.product_category_name_english
+
+)
+
+SELECT product_category_name_english, TotalPrice from TotalPriceCTE
+ORDER BY TotalPrice DESC
+"""
+
 df = pd.read_gbq(sql_query_1, project_id = project_id, credentials=credentials, dialect = 'standard')
 
 print(df.head)
