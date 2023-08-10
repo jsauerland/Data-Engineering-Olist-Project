@@ -42,11 +42,6 @@ csv_files = [
 dataframes = {}     # Create an empty dictionary to store dataframes
 
 
-
-
-
-
-
 for idx, csv_file in enumerate(csv_files):  #loop through the CSV files and set df_name
     df_name = csv_file.replace('.csv', '')  
     dataframes[df_name] = pd.read_csv(csv_file)  # Use df_name as the key in the dictionary
