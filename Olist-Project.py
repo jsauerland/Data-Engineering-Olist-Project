@@ -16,15 +16,13 @@ api = kaggle.api
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'BQ_KEY.json' # this is your account details JSON file
 key_path = 'BQ-olist-ecommerce-key.json'
 
-# Create a BigQuery client instance (bigquery_client)
+# Create a BigQuery client instance (bigquery_client) 
 
 
-credentials = service_account.Credentials.from_service_account_file(
-    key_path
-)
+credentials = service_account.Credentials.from_service_account_file(key_path)
 
 client = bigquery.Client(credentials=credentials, project='olist-ecommerce-project') # Create a BigQuery client instance (bigquery_client)
-project_id = 'olist-ecommerce-project'  # Replace with your actual project ID
+project_id = 'olist-ecommerce-project'  # Replace with your GBQ project ID
 
 # kaggle.api.dataset_download_files('olistbr/brazilian-ecommerce',  unzip=True) # This is commented out after it is run because re-running it will re-pull the data from Kaggle using bandwith and CPU resources unnecessarily
 
