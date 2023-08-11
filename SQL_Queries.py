@@ -84,7 +84,7 @@ WITH TotalPriceCTE AS (
   GROUP BY A.order_id, A.product_id, C.product_category_name_english
 
 )
-
+ 
 SELECT product_category_name_english, TotalPrice from TotalPriceCTE
 ORDER BY TotalPrice DESC
 """
