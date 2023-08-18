@@ -89,4 +89,4 @@ CREATE TABLE product_category_name_translation (
 );
 
 
----- Creating tables in GBQ Server ----
+---- Creating tables in Google BigQuery ----
