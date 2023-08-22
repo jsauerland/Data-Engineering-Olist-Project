@@ -5,9 +5,9 @@ In this file, I include a complete list of all developments made to this project
 
 **Please note that the dates below may not be completely in sync with commit history, as this project was performed in the past, and then, later uploaded to Github, which required testing, cleanup, and documentation. These dates, however, are the estimated dates when developments were made.**
 
-4/2/2023: Created 'SQL_Queries.py'
+8/2/2023: Created 'SQL_Queries.py'
 
-4/5/2023: Added data questions added to 'SQL_Queries.py':
+8/5/2023: Added data questions added to 'SQL_Queries.py':
 
 
 1. Retrieve all columns for a specific order using its `order_id`
@@ -23,3 +23,5 @@ In this file, I include a complete list of all developments made to this project
     
 
 Remember, these questions can serve as starting points for your SQL practice with the 'olist_order_items_dataset'. You can gradually increase the complexity of your queries as you become more comfortable with SQL.
+
+8/22/23: Created a stored procedure that will create a new flat table that joins together olist_orders, olist_order_items,  olist_order_payments into one table. This will be considered an analytical table that will be queried often

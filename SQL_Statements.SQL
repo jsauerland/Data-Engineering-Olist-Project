@@ -88,5 +88,46 @@ CREATE TABLE product_category_name_translation (
     product_category_name_english VARCHAR(255)
 );
 
+---- Stored procedure to create an analytical table for users to query
+
+CREATE PROCEDURE CreateAnalyticalTable AS
+BEGIN
+    -- Drop the analytical table if it already exists
+    IF OBJECT_ID('analytical_table') IS NOT NULL
+        DROP TABLE analytical_table;
+
+    -- Create the analytical table by joining the required tables
+    SELECT
+        A.order_id,
+        A.customer_id,
+        A.order_status,
+        A.order_purchase_timestamp,
+        A.order_approved_at,
+        A.order_delivered_carrier_date,
+        A.order_delivered_customer_date,
+        A.order_estimated_delivery_date,
+        B.order_item_id,
+        B.product_id,
+        B.seller_id,
+        B.shipping_limit_date,
+        B.price,
+        B.freight_value,
+        C.payment_sequential,
+        C.payment_type,
+        C.payment_installments,
+        C.payment_value
+    INTO analytical_table
+    FROM olist_orders AS A
+    JOIN olist_order_items AS B ON A.order_id = B.order_id
+    JOIN olist_order_payments AS C ON A.order_id = C.order_id;
+
+    -- Create any necessary indexes or constraints on the analytical_table if needed
+    -- CREATE INDEX idx_analytical_table_customer_id ON analytical_table(customer_id);
+    -- ...
+
+    PRINT 'Analytical table created successfully.';
+END;
+
+
 
 ---- Creating tables in Google BigQuery ----
