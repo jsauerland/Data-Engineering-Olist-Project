@@ -11,7 +11,7 @@ In this file, I include a complete list of all developments made to this project
 
 
 1. Retrieve all columns for a specific order using its `order_id`
-2. List the unique product IDs present in the dataset
+2. List the unique product IDs present in the dataset.
 3. Calculate the average price and freight value for all orders.
 4. Find the total number of distinct sellers in the dataset.
 5. Get the highest and lowest prices among all products
