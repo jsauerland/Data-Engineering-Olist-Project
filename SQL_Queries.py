@@ -89,6 +89,24 @@ SELECT product_category_name_english, TotalPrice from TotalPriceCTE
 ORDER BY TotalPrice DESC
 """
 
+# 9. List the orders with a shipping limit date beyond a specific date.
+
+sql_query_5 = """
+SELECT 
+    A."order_id", 
+    COALESCE(A."customer_id", B."customer_id") AS "customer_id", 
+    A."order_status", 
+    A."order_purchase_timestamp", 
+    A."order_approved_at", 
+    A."order_delivered_carrier_date", 
+    A."order_delivered_customer_date", 
+    A."order_estimated_delivery_date"
+FROM ecommerce_data.olist_orders_dataset A
+LEFT JOIN ecommerce_data.olist_customers_dataset B ON A."customer_id" IS NULL AND A."customer_id" = B."customer_id"
+WHERE A."order_purchase_timestamp" > '2017-05
+
+"""
+
 df = pd.read_gbq(sql_query_1, project_id = project_id, credentials=credentials, dialect = 'standard')
 
 print(df.head)
