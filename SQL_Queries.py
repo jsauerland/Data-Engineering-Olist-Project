@@ -75,18 +75,32 @@ ORDER BY total_revenue desc
 
 sql_query_4 = """
 WITH TotalPriceCTE AS ( 
-  SELECT A.order_id, A.product_id, C.product_category_name_english, ROUND(SUM (price + freight_value),2) AS TotalPrice
-  
-  FROM `ecommerce_data.olist_order_items_dataset` as A
-  LEFT JOIN `ecommerce_data.olist_products_dataset` as B on A.product_id = B.product_id
-  LEFT JOIN `ecommerce_data.product_category_name_translation` as C on B.product_category_name = C.product_category_name
-
-  GROUP BY A.order_id, A.product_id, C.product_category_name_english
-
+  SELECT 
+    A.order_id, 
+    A.product_id, 
+    C.product_category_name_english, 
+    ROUND(SUM(price + freight_value), 2) AS TotalPrice
+  FROM 
+    `ecommerce_data.olist_order_items_dataset` AS A
+  LEFT JOIN 
+    `ecommerce_data.olist_products_dataset` AS B 
+  ON 
+    A.product_id = B.product_id
+  LEFT JOIN 
+    `ecommerce_data.product_category_name_translation` AS C 
+  ON 
+    B.product_category_name = C.product_category_name
+  GROUP BY 
+    A.order_id, A.product_id, C.product_category_name_english
 )
  
-SELECT product_category_name_english, TotalPrice from TotalPriceCTE
-ORDER BY TotalPrice DESC
+SELECT 
+  product_category_name_english, 
+  TotalPrice 
+FROM 
+  TotalPriceCTE
+ORDER BY 
+  TotalPrice DESC;
 """
 
 # 9. List the orders with a shipping limit date beyond a specific date.
