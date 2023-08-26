@@ -82,7 +82,7 @@ WITH TotalPriceCTE AS (
     ROUND(SUM(price + freight_value), 2) AS TotalPrice
   FROM 
     `ecommerce_data.olist_order_items_dataset` AS A
-  LEFT JOIN 
+  LEFT JOIN  
     `ecommerce_data.olist_products_dataset` AS B 
   ON 
     A.product_id = B.product_id
