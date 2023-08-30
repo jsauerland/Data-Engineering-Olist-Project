@@ -16,7 +16,7 @@ In order to practice and enhance my data engineeering skillset, I launched a pro
 
 For this project, I used several completely different applications and cloud data warehouses in order to gain more exposure, and understanding of different CDWs, and how they differ in form and function. These include Apache Cassandra, Snowflake, Azure Data Lake, Google BigQuery, and SQL SERVER.
 
-### Data Build Tool (DBT): Deployed a connection to Google BigQuery in DBT
+##### Data Build Tool (DBT)
 
 In DBT, you can change things between tables and views by changing a keyword rather than writing the data definition language (DDL) to do this behind the scenes
 
