@@ -10,6 +10,7 @@ In order to practice and enhance my data engineeering skillset, I launched a pro
 - Explore On-premises and Cloud Data Solutions, and different use cases that Cloud technologies are used for
 - Build and deploy solutions using a variety of modern tools: Google BigQuery, SQL Server, Microsoft Azure, Snowflake, Apache Cassandra
 - Learn how Data Pipelines work in detail
+- Use various data services to store and produce cleansed and enhanced datasets for analysis
 
 
 # Part 1: Establishing the Data Warehouses
