@@ -5,9 +5,18 @@ In this file, I include a complete list of all developments made to this project
 
 **Please note that the dates below may not be completely in sync with commit history, as this project was performed in the past, and then, later uploaded to Github, which required testing, cleanup, and documentation. These dates, however, are the estimated dates when developments were made.**
 
-0.1: Created 'SQL_Queries.py' to house many of the SQL queries I am using throughout this project. 
+0.01: Created Olist-Project.py script that performed the following 
 
-0.11: Added data questions added to 'SQL_Queries.py', which were a few questions I wanted to find answers to using SQL.
+
+- Connect to Kaggle through an API call, and retrieve CSV files that will be used throughout the project
+- Store each table from the CSV files in a Pandas dataframe
+- Connect to Google BigQuery (GBQ), and loop through each store each CSV file in its own unique GBQ table
+
+
+
+0.02: Created 'SQL_Queries.py' to house many of the SQL queries I am using throughout this project. 
+
+0.03: Added data questions added to 'SQL_Queries.py', which were a few questions I wanted to find answers to using SQL.
 
 
 1. Retrieve all columns for a specific order using its `order_id`
@@ -23,7 +32,10 @@ In this file, I include a complete list of all developments made to this project
     
 
 
-0.12: Created a stored procedure that will create a new flat table that joins together olist_orders, olist_order_items,  olist_order_payments into one table. This will be considered an analytical table that will be queried often
 
 
-0.13: Developed a DBT connection to BigQuery / GCP. Configured the new model so it will be materialized as a table, and a second model as a view. 
+Move the below to future rollout - drafting ahead of time. this isn't ready yet
+
+x.xx: Created a stored procedure that will create a new flat table that joins together olist_orders, olist_order_items,  olist_order_payments into one table. This will be considered an analytical table that will be queried often
+
+x.xx: Developed a DBT connection to BigQuery / GCP. Configured the new model so it will be materialized as a table, and a second model as a view. 
