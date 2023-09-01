@@ -1,6 +1,6 @@
-### Using DBT 
+### Using Azure
 
-In this project, I chose to use DBT due to its orchestration layer that makes it easy to write code, and then push it down onto a database, as well as its great CI/CD and documentation features
+In this project, I made the decision to incorporate Azure in order to diversify my skillset, and gain valuable exposure to Azure. I performed a great deal of research into industry use of tools and applications, and a fair amount of companies appeared to incorporate Azure alongside other major tools, which made me realize that using this in addition to others was vital to my growth as an engineer. 
 
 Goals and Deliverables:
 
