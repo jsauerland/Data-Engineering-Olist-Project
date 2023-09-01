@@ -4,7 +4,7 @@
 
 In order to practice and enhance my data engineeering skillset, I launched a project to model data, create data pipelines, a data lake, and much more. This helped me to further my understanding of Data Engineering both practically and conceptually. For this project, I am using Azure to setup a Data Lake. 
 
-### Project Goals
+### Purpose of this project
 
 - Broaden my knowledge of big data infrastructure, and understand the differences between databases, data warehouses, data lakes, data marts, etc.
 - Explore On-premises and Cloud Data Solutions, and different use cases that Cloud technologies are used for
@@ -13,6 +13,16 @@ In order to practice and enhance my data engineeering skillset, I launched a pro
 - Use various data services to store and produce cleansed and enhanced datasets for analysis
 - Learn about common data engineering practices and a high-level architecting process for a data engineering project
 
+### Goals and Deliverables 
+
+1. ____
+2. ____
+3. ____
+4. ____
+5. ____
+6. ____
+7. ____
+8. ____
 
 # Part 1: Establishing the Data Warehouses
 
