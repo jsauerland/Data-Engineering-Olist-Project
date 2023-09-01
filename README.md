@@ -11,6 +11,7 @@ In order to practice and enhance my data engineeering skillset, I launched a pro
 - Build and deploy solutions using a variety of modern tools: Google BigQuery, SQL Server, Microsoft Azure, Snowflake, Apache Cassandra
 - Learn how Data Pipelines work in detail
 - Use various data services to store and produce cleansed and enhanced datasets for analysis
+- Learn about common data engineering practices and a high-level architecting process for a data engineering project
 
 
 # Part 1: Establishing the Data Warehouses
