@@ -6,9 +6,9 @@ In order to practice and enhance my data engineeering skillset, I launched a pro
 
 ### Project Goals
 
-- Broaden my knowledge of big data infrastructure, data warehousing
-- Develop cloud-based data warehouses on modern Cloud Data Warehouse applications: Google BigQuery, Apache Cassandra, Spark, Amazon Redshift, etc.
-- Deepen my understanding of big data ecosystems
+- Broaden my knowledge of big data infrastructure, and understand the differences between databases, data warehouses, data lakes, data marts, etc.
+- Explore On-premises and Cloud Data Solutions, and different use cases that Cloud technologies are used for
+- Build and deploy solutions using a variety of modern tools: Google BigQuery, SQL Server, Microsoft Azure, Snowflake, Apache Cassandra
 - Learn how Data Pipelines work in detail
 
 
