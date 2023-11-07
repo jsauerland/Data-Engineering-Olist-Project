@@ -7,6 +7,17 @@ from kaggle.api.kaggle_api_extended import KaggleApi
 import os
 import pandas as pd
 
+'''
+Table names in BQ
+`olist-ecommerce-project.ecommerce_data.olist_geolocation_dataset`
+`olist-ecommerce-project.ecommerce_data.olist_order_items_dataset`
+`olist-ecommerce-project.ecommerce_data.olist_order_payments_dataset` 
+`olist-ecommerce-project.ecommerce_data.olist_order_reviews_dataset`
+`olist-ecommerce-project.ecommerce_data.olist_orders_dataset` 
+`olist-ecommerce-project.ecommerce_data.olist_products_dataset`
+`olist-ecommerce-project.ecommerce_data.olist_sellers_dataset`
+`olist-ecommerce-project.ecommerce_data.product_category_name_translation` 
+''' 
 
 
 
