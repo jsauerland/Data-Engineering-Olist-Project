@@ -8,7 +8,7 @@ import os
 import pandas as pd
 
 '''
-Table names in BQ
+BQ Table names
 `olist-ecommerce-project.ecommerce_data.olist_geolocation_dataset`
 `olist-ecommerce-project.ecommerce_data.olist_order_items_dataset`
 `olist-ecommerce-project.ecommerce_data.olist_order_payments_dataset` 
@@ -34,10 +34,20 @@ project_id = 'olist-ecommerce-project'
 
 
 
-# Retrieve the schema for a table, to get all the column names
+# Retrieve the schema for our tables to get all the column names
 information_schema_query_1 = """
 SELECT * FROM `olist-ecommerce-project.ecommerce_data.INFORMATION_SCHEMA.COLUMNS`
-WHERE table_name = 'olist_customers_dataset'
+WHERE table_name IN (
+  'olist_geolocation_dataset',
+  'olist_order_items_dataset',
+  'olist_order_payments_dataset',
+  'olist_order_reviews_dataset',
+  'olist_orders_dataset',
+  'olist_products_dataset',
+  'olist_sellers_dataset',
+  'product_category_name_translation'
+)
+
 
 """
 
