@@ -9,6 +9,7 @@ import pandas as pd
 
 
 
+
 # Set Google Application Credentials
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'BQ_KEY.json' # BigQuery Key
 key_path = 'BQ-olist-ecommerce-key.json'
@@ -19,7 +20,15 @@ credentials = service_account.Credentials.from_service_account_file(key_path)
 client = bigquery.Client(credentials=credentials, project='olist-ecommerce-project') 
 project_id = 'olist-ecommerce-project'  
 
-# ???
+
+
+
+# Retrieve the schema for a table, to get all the column names
+information_schema_query_1 = """
+SELECT * FROM `olist-ecommerce-project.ecommerce_data.INFORMATION_SCHEMA.COLUMNS`
+WHERE table_name = 'olist_customers_dataset'
+
+"""
 
 sql_query_1 = """ 
 WITH OrderSummary AS (
