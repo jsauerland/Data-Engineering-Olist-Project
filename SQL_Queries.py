@@ -51,7 +51,25 @@ WHERE table_name IN (
 
 """
 
-sql_query_1 = """ 
+select_all_query = """
+SELECT *
+FROM `olist-ecommerce-project.ecommerce_data.olist_orders_dataset` AS orders
+LEFT JOIN `olist-ecommerce-project.ecommerce_data.olist_order_items_dataset` AS order_items
+  ON orders.order_id = order_items.order_id
+LEFT JOIN `olist-ecommerce-project.ecommerce_data.olist_order_reviews_dataset` AS order_reviews
+  ON orders.order_id = order_reviews.order_id
+LEFT JOIN `olist-ecommerce-project.ecommerce_data.olist_products_dataset` AS products
+  ON orders.order_id = products.product_id
+LEFT JOIN `olist-ecommerce-project.ecommerce_data.product_category_name_translation` AS category_translation
+  ON products.product_category_name = category_translation.product_category_name
+LEFT JOIN `olist-ecommerce-project.ecommerce_data.olist_sellers_dataset` AS sellers
+  ON order_items.seller_id = sellers.seller_id
+LEFT JOIN `olist-ecommerce-project.ecommerce_data.olist_order_payments_dataset` AS order_payments
+  ON orders.order_id = order_payments.order_id
+
+"""
+
+OrderSummary_CTE = """ 
 WITH OrderSummary AS (
     SELECT 
         order_status, 
@@ -75,7 +93,7 @@ ORDER BY
 
 # retrieve customers who have not placed an order.
 
-sql_query_2 = """ 
+Customers_without_orders = """ 
 WITH CustomersWithoutOrders AS (
   SELECT a.customer_id
   FROM `ecommerce_data.olist_customers_dataset` AS a
@@ -93,7 +111,7 @@ FROM CustomersWithoutOrders;
 
 # Retrieve total revenue for all orders
 
-sql_query_3 = """ 
+tot_rev_all_order = """ 
 SELECT SUM(A.price) AS total_revenue, product_id
 FROM `ecommerce_data.olist_order_items_dataset` AS A
 LEFT OUTER JOIN `ecommerce_data.olist_orders_dataset` AS B ON A.order_id = B.order_id
